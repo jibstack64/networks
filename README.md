@@ -1,5 +1,9 @@
 # networks
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-red.svg)](https://opensource.org/licenses/MIT)
+![Architecture: x86_64](https://img.shields.io/badge/architecture-x86__64-blue)
+[![Compiler: GCC](https://img.shields.io/badge/compiler-GCC-purple)](https://gcc.gnu.org/)
+
 ### Overview
 networks is a command-line utility designed for managing multiple sets of wpa_supplicant credentials. This is particularly useful if you are working on a server and have no graphical interface for creating and changing WiFi connections.
 networks is built on a local database; you can append credentials to this database, remove them and switch to them. A backup is made of your wpa_supplicant-*.conf file every time you switch to a set of credentials, providing a level of security, as losing your WiFi credentials becomes more difficult.
