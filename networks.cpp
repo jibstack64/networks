@@ -25,6 +25,7 @@ namespace fs = std::experimental::filesystem;
 std::string _UNM;
 std::string _UID;
 std::string _CONFDR;
+std::string _BASE;
 Config _CONFIG = defaultConfig();
 bool _DEBUG = false;
 bool _BRUTE = false;
@@ -105,7 +106,7 @@ void add(std::string ssid, std::string password) {
         file.close();
         logFatal("Failed to run wpa_passphrase!");
     }
-    file << wpastr << std::endl;
+    file << _BASE << std::endl << wpastr << std::endl;
     file.close();
     log("Added SSID '"+ssid+"' to the database.", State::Success);
 }
@@ -140,6 +141,7 @@ void sw(std::string ssid) {
         logFatal("Failed to write credentails to the target supplicant.");
     }
     log("Switched to credentials of SSID '"+ssid+"'.", State::Success);
+    log("You must restart the wpa_supplicant service in order for changes to take place.", State::Neutral);
 }
 
 
@@ -170,7 +172,7 @@ int main(int argc, char** argv) {
             if (arg.first[0] == '/') {
                 rl.replace(0, 1, "");
             }
-            std::cout << "# " + rl + "\n? " + arg.second << std::endl; 
+            std::cout << "# " + rl + "\n    ? " + arg.second << std::endl; 
         }
         return 0;
     }
@@ -182,6 +184,46 @@ int main(int argc, char** argv) {
     loadStatic(); _CONFIG = loadConfig(_CONFDR);
     if (_CONFIG.database_path[0] = '~') {
         _CONFIG.database_path.replace(0, 1, "/home/"+_UNM);
+    }
+
+    // we want to keep base of old wpa_supplicant, otherwise BIG issues occur
+    if (!fs::exists(_CONFIG.target_supplicant)) {
+        logFatal("Target supplicant does not exist!");
+    } else {
+        std::string base = identify_path(".baseplate");
+        if (!fs::exists(base)) {
+            int stat = 0;
+            std::string dat = execShell("sudo cat "+_CONFIG.target_supplicant, stat);
+            if (stat != 0) {
+                logFatal("Error creating backup of baseplate wpa_supplicant configuration!");
+            }
+            std::ofstream file2(base);
+            const std::string canceller = "network";
+            std::string base;
+            int pos = dat.find("network=");
+            for (int i = 0; i < pos; i++) {
+                base += dat[i];
+            }
+            out:
+            _BASE = base;
+            if (file2.is_open()) {
+                file2 << base;
+                file2.close();
+            } else {
+                logFatal("Failed to create a backup of the wpa_supplicant baseplate!");
+            }
+        } else {
+            std::ifstream file(base);
+            if (file.is_open()) {
+                char t;
+                while (file >> std::noskipws >> t) {
+                    _BASE += t;
+                }
+                file.close();
+            } else {
+                logFatal("Failed reading baseplate.");
+            }
+        }
     }
 
     // ensure that database path is available
