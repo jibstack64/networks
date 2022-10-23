@@ -20,3 +20,9 @@ networks uses TOML as its configuration format. This configuration file can be f
 - [ ] Create class for printing with colours.
 - [ ] Allow SSIDs/passwords with spaces.
 - [ ] Create an install script.
+
+### Libraries used
+> https://github.com/adishavit/argh | Used for argument parsing.
+
+
+> https://github.com/ToruNiina/toml11 | Configuration (reading TOML).
