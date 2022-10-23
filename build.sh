@@ -1,0 +1,1 @@
+g++ -std=c++17 networks.cpp -lstdc++fs -o build/build
