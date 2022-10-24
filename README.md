@@ -15,6 +15,7 @@ networks uses TOML as its configuration format. This configuration file can be f
 - `--add [SSID],password` : Adds the given set of credentials to the database. The format is very important: the SSID should be covered by square brackets and seperated from the password by a comma.
 - `--remove SSID` : Finds and removes the credentials containing the provided SSID.
 - `--switch SSID` : Switches to the credentials matching the given SSID.
+- `--list n` : Lists through all configuration files until `n` is reached.
 - `--brute` : Forces `--add` to overwrite any set of credentials with a matching SSID to the one provided.
 - `--debug` : Enables debugging messages.
 - `--help` : Self-explanatory, provides you with a help page similar to that of this README.

@@ -144,6 +144,18 @@ void sw(std::string ssid) {
     log("You must restart the wpa_supplicant service in order for changes to take place.", State::Neutral);
 }
 
+// lists credentials in the database until 'n' databases is reached
+void list(int n = -1) {
+    int i = 0;
+    for (const auto& file : fs::directory_iterator(_CONFIG.database_path)) {
+        if (i == n) {
+            break;
+        } else {
+            std::cout << file.path() << std::endl;
+        }
+        i++;
+    }
+}
 
 int main(int argc, char** argv) {
     // map of arguments and their descriptors
@@ -151,6 +163,7 @@ int main(int argc, char** argv) {
         {"--add", "Adds the provided credentials to the database. The SSID MUST be covered by square brackets and be split with the password by a comma (e.g. [MyWifi],my4m4zingP4ssw0rd)."}, 
         {"--remove", "Identifies the credentials config linked to the provided SSID and removes them from the database."},
         {"--switch", "Switches to the set of credentials matching the provided SSID."},
+        {"--list", "Lists sets of credentials until the provided count is reached."},
         {"/--debug", "Enables debug logging."},
         {"/--help", "Presents this text."},
         {"/--brute", "Ignores any present files and forcefully overwrites."}
@@ -272,6 +285,18 @@ int main(int argc, char** argv) {
                 } else {
                     sw(ssid);
                 }
+            }
+        } else if (arg.first == "list" || arg.first == "l") {
+            if (arg.second == "!") {
+                list();
+            } else {
+                int real;
+                try {
+                    real = std::stoi(arg.second);
+                } catch (std::exception) {
+                    logFatal("List parameter must be an integer or '!' to indicate all.");
+                }
+                list(real);
             }
         }
         d = true;
