@@ -1,7 +1,7 @@
 # networks
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-red.svg)](https://opensource.org/licenses/MIT)
-![Architecture: x86_64](https://img.shields.io/badge/architecture-x86__64-blue)
+![Build: Passing](https://img.shields.io/badge/build-passing-success)
 [![Compiler: GCC](https://img.shields.io/badge/compiler-GCC-purple)](https://gcc.gnu.org/)
 
 ### Overview
