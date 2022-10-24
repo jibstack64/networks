@@ -5,7 +5,7 @@
 ![Contributions: Welcome](https://img.shields.io/badge/contributions-welcome-success)
 
 ### Overview
-networks is a command-line utility designed for managing multiple sets of wpa_supplicant credentials. This is particularly useful if you are working on a server and have no graphical interface for creating and changing WiFi connections.
+networks is a command-line utility designed for managing multiple sets of wpa_supplicant credentials. This is particularly useful if you are working on a server, android shell, or fresh install, and have no graphical interface for creating and changing WiFi connections.
 networks is built on a local database; you can append credentials to this database, remove them and switch to them. A backup is made of your wpa_supplicant-*.conf file every time you switch to a set of credentials, providing a level of security, as losing your WiFi credentials becomes more difficult.
 
 ### Configuration
