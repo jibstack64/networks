@@ -1,6 +1,6 @@
 # networks
 
-[![Tag: v0.0.1](https://img.shields.io/badge/tag-v0.0.1-yellowgreen.svg)](https://github.com/jibstack64/networks/releases/tag/v0.0.1)
+[![Tag: v0.0.2](https://img.shields.io/badge/tag-v0.0.2-blue.svg)](https://github.com/jibstack64/networks/releases/tag/v0.0.1)
 [![License: MIT](https://img.shields.io/badge/license-MIT-red.svg)](https://opensource.org/licenses/MIT)
 ![Contributions: Welcome](https://img.shields.io/badge/contributions-welcome-success)
 
