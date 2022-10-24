@@ -1,8 +1,8 @@
 # networks
 
+[![Tag: v0.0.1](https://img.shields.io/badge/tag-v0.0.1-yellowgreen.svg)](https://github.com/jibstack64/networks/releases/tag/v0.0.1)
 [![License: MIT](https://img.shields.io/badge/license-MIT-red.svg)](https://opensource.org/licenses/MIT)
-![Build: Passing](https://img.shields.io/badge/build-passing-success)
-[![Compiler: GCC](https://img.shields.io/badge/compiler-GCC-purple)](https://gcc.gnu.org/)
+![Contributions: Welcome](https://img.shields.io/badge/contributions-welcome-success)
 
 ### Overview
 networks is a command-line utility designed for managing multiple sets of wpa_supplicant credentials. This is particularly useful if you are working on a server and have no graphical interface for creating and changing WiFi connections.
