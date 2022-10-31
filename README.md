@@ -20,14 +20,22 @@ networks uses TOML as its configuration format. This configuration file can be f
 - `--debug` : Enables debugging messages.
 - `--help` : Self-explanatory, provides you with a help page similar to that of this README.
 
+### Install script (build from source)
+- Download `install.sh` from the sources tree.
+- Run `chmod +x` on the shellscript file.
+- Done!
+
 ### Future changes
 - [ ] Remove shell usage for switch.
-- [ ] Create class for printing with colours.
+- [x] ~~Create class for printing with colours.~~ Use pretty for logging with colours.
 - [ ] Allow SSIDs/passwords with spaces.
-- [ ] Create an install script.
+- [x] Create an install script.
 
 ### Libraries used
-> https://github.com/adishavit/argh | Used for argument parsing.
+> [Argh!](https://github.com/adishavit/argh) is used for argument parsing.
 
 
-> https://github.com/ToruNiina/toml11 | Configuration (reading TOML).
+> [toml11](https://github.com/ToruNiina/toml11) is used for parsing configuration (reading TOML).
+
+
+> [pretty](https://github.com/jibstack64/pretty) is used for logging with colours.

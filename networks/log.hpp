@@ -2,32 +2,25 @@
 
 #include <iostream>
 #include <string>
+#include <map>
+#include "../ext/pretty.hpp"
 
-// console colours
-#define YLW "\033[1;33m"
-#define RED "\033[1;31m"
-#define GRN "\033[1;32m"
-#define RS "\033[1m"
-
-enum State {
-    Neutral, Error, Success, None
+enum class State {
+    Neutral, Error, Success
 };
 
 // logs the provided string to the console.
 void log(const std::string msg, State state = State::Neutral) {
-    std::string clr;
     switch (state) {
-        case Neutral:
-        clr = YLW;
-        case Error:
-        clr = RED;
-        case Success:
-        clr = GRN;
-        case None:
-        clr = "";
-    }
-    if (state == Error || state == Success) {
-        std::cout << clr + msg + RS << std::endl;
+        case State::Neutral:
+            std::cout << pty::paint(msg, "yellow") << std::endl;
+            break;
+        case State::Error:
+            std::cout << pty::paint(msg, {"red", "bold"}) << std::endl;
+            break;
+        case State::Success:
+            std::cout << pty::paint(msg, {"green", "bold"}) << std::endl;
+            break;
     }
 }
 
