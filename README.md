@@ -23,6 +23,7 @@ networks uses TOML as its configuration format. This configuration file can be f
 ### Install script (build from source)
 - Download `install.sh` from the sources tree.
 - Run `chmod +x` on the shellscript file.
+- `./install.sh`,
 - Done!
 
 ### Future changes
